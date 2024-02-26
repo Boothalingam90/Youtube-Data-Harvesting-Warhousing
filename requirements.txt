@@ -2,3 +2,4 @@ pandas
 numpy
 googleapiclient.discovery
 pypyodbc
+prettyprinter
