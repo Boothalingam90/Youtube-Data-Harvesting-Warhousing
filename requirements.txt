@@ -1,6 +1,7 @@
 pandas
 numpy
 google-api-python-client
+pyodbc
 pypyodbc
 pymongo
 prettyprinter
