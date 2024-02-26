@@ -6,6 +6,7 @@ import main
 config = {
             "api_key" : 'AIzaSyAqkMyd-Dp5gB3pxc7OU3TeFgBxaRnQoHY',
             "sqlconn" : "Driver={SQL Server Native Client 11.0};Server=BOOBESH\SQLEXPRESS;Database=Youtube;uid=sa;pwd=123",
+            "sqlconn" : st.secrets["sql_conn_string"],
             # "mongoconn" : "mongodb://localhost:27017/",
             "mongoconn" : "mongodb+srv://" + st.secrets["mongo_db_username"] + ":" + st.secrets["mongo_db_password"] + "@clustercapstoneyoutube.h0eq7on.mongodb.net/?retryWrites=true&w=majority&appName=ClusterCapstoneYoutube",
             "mongodbname" : "YouTubeData",
