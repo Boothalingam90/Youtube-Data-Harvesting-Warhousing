@@ -1,10 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pypyodbc as pyodbc
 import main
-
-
 
 config = {
             "api_key" : 'AIzaSyAqkMyd-Dp5gB3pxc7OU3TeFgBxaRnQoHY',
@@ -28,7 +25,6 @@ with tab1:
    SearchVideoName = st.text_input('Video Name : ', '')
    SearchDescription = st.text_input('Description : ', '')
    submitSearch = st.button("Search")
-   print(pyodbc.drivers())
    if submitSearch:
     header = ["Video name", "Video description", "Published date", "View count", "Like count", "Channel name"]
     df = pd.DataFrame(mf.getListofChannelDetails("", SearchChannelName, SearchVideoName, SearchDescription), columns=(header))
