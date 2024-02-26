@@ -1,14 +1,7 @@
 import process
 
 class mainfunction:
-    def __init__(self):
-        config = {
-            "api_key" : 'AIzaSyAqkMyd-Dp5gB3pxc7OU3TeFgBxaRnQoHY',
-            "sqlconn" : "Driver={SQL Server Native Client 11.0};Server=BOOBESH\SQLEXPRESS;Database=Youtube;uid=sa;pwd=123",
-            "mongoconn" : "mongodb://localhost:27017/",
-            "mongodbname" : "YouTubeData",
-            "mongodbcolname" : "ChannelData"
-        }
+    def __init__(self, config):
         self.mp = process.mainprocess(config)
 
     def executeharvesting(self, channel_id):
