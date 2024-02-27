@@ -1,4 +1,5 @@
 import sqlconn
+import streamlit as st
 
 class warhousehelper:
     def __init__(self, config):
@@ -33,10 +34,14 @@ class warhousehelper:
 
     def insertcomment(self, data):
         comment_data = data["Comments"]
+        st.info(comment_data)
         insert_query = "comment_insert @comment_id = ?, @video_id = ?, @comment_text = ?, @comment_author = ?, @comment_published_date = ?, @like_count = ?, @reply_count = ?, @comment_key = ?"
+        st.info(insert_query)
         for commentitem in comment_data.keys():
             comment_tem_data = comment_data[commentitem]
+            st.info(comment_tem_data)
             commentvalues = (comment_tem_data["Comment_Id"], comment_tem_data["Video_Id"], comment_tem_data["Comment_Text"], comment_tem_data["Comment_Author"], comment_tem_data["Comment_PublishedAt"], comment_tem_data["Like_count"], comment_tem_data["Reply_count"], comment_tem_data["Comment_key"])
+            st.info(commentvalues)
             self.sqlcon.insert(insert_query, commentvalues)
     
     def insertChannelData(self, data):
