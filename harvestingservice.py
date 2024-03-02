@@ -9,7 +9,12 @@ class harvestinghelper:
         self.api_key = config["api_key"]
 
     def insertmongoprocess(self, channel_id):
-        self.mongocon.insert_one(self.mongodbcolname, hc.getChannelData(self.api_key, channel_id))
+        data = hc.getChannelData(self.api_key, channel_id)
+        id = ""
+        if len(data) > 0:
+            self.mongocon.insert_one(self.mongodbcolname, data)
+            id = channel_id
+        return id
         
     def getdatabychannelid(self, channel_id):
         return self.mongocon.get_one(self.mongodbcolname, { "Channel_Name.channel_id" : channel_id })

@@ -9,16 +9,20 @@ class mainprocess:
 
     def harvesting(self, channel_id):
         print("Processing...")
-
+        id = ""
         data = self.hh.getdatabychannelid(channel_id)
         if data == None:
-            self.hh.insertmongoprocess(channel_id)
+            id = self.hh.insertmongoprocess(channel_id)
         else:
             self.hh.deletedatabychannelid(channel_id)
             print("Channel data is already available, so we are deleting the data and harvesting again")
-            self.hh.insertmongoprocess(channel_id)
+            id = self.hh.insertmongoprocess(channel_id)
 
-        print("Harvesting completed for this channel Channel Id : " + channel_id)
+        if id != "":
+            print("Harvesting completed for this channel Channel Id : " + channel_id)
+        else:
+            print("Channel Id : " + channel_id + " not exists")
+        return id
 
     def warhousing(self, channel_name):
         print("Processing...")

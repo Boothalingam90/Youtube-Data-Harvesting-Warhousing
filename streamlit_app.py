@@ -32,12 +32,25 @@ with tab1:
     st.dataframe(df)
 
 with tab2:
-   HarvestingChannelId = st.text_input('Channel Id : ', '')
+   HarvestingChannelIds = st.text_input('Channel Id : ', '')
    submitFetch = st.button("Fetch Channel Details")
    if submitFetch:
-    st.info("Processing...")
-    mf.executeharvesting(HarvestingChannelId)
-    st.success("Harvesting completed for this channel")
+    lstHarvestingChannelIds = HarvestingChannelIds.split(',')
+    if HarvestingChannelIds == "":
+      st.warning("Channel Id should not be empty")
+    elif len(lstHarvestingChannelIds) > 10:
+      st.warning("More than 10 channel id are accepted to fetch")
+    else:
+      for id in lstHarvestingChannelIds:
+         if len(id) ==  0:
+           st.warning("Channel Id should not be empty")
+         else:
+            st.info("Processing...")
+            cid = mf.executeharvesting(id)
+            if cid != "":
+               st.success("Harvesting completed for this channel Id : " + id)
+            else:
+               st.warning("Channel Id : " + id + " not exists")
 
 with tab3:
    MigrateChannelname = st.selectbox('Please select Channel name : ', mf.getListofHarvestedChannels())

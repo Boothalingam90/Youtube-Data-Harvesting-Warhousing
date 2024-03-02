@@ -5,10 +5,10 @@ class mainfunction:
         self.mp = process.mainprocess(config)
 
     def executeharvesting(self, channel_id):
-        self.mp.harvesting(channel_id)
+        return self.mp.harvesting(channel_id)
 
     def executewarhousing(self, channel_name):
-        self.mp.warhousing(channel_name)
+        return self.mp.warhousing(channel_name)
     
     def getListofHarvestedChannels(self):
         return self.mp.getListofHarvestedChannels() 

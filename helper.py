@@ -11,13 +11,10 @@ class helperClass:
     def getChannelData(self, api_key, channel_id):
         yh = youtube.youtubeHarvesting(api_key)
         channel_object = {}
-
-        channel_data = yh.getChannelDatabyChannelId(channel_id)      
+        channel_data = yh.getChannelDatabyChannelId(channel_id)    
         if len(channel_data) > 0:
-
-            channel_data_items = self.cf.getValuesfromDictionary(channel_data, "items")
+            channel_data_items = self.cf.getValuesfromDictionary(channel_data, "items") 
             if len(channel_data_items) > 0:
-
                 channel_informations = self.processChannelData(channel_data_items, channel_id)
                 channel_object["Channel_Name"] = channel_informations
                 self.processPlaylistData(yh, channel_object, "")
